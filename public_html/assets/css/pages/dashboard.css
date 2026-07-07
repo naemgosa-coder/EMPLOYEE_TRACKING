@@ -1,0 +1,64 @@
+/* assets/css/pages/dashboard.css */
+.stat-card--primary { border: 1px solid rgba(13,110,253,.15); }
+.stat-card--info    { border: 1px solid rgba(13,202,240,.18); }
+.stat-card--success { border: 1px solid rgba(25,135,84,.18); }
+.stat-card--danger  { border: 1px solid rgba(220,53,69,.18); }
+/* รองรับการ์ดสถานะสีเหลือง */
+.stat-card--warning {
+    border-left: 4px solid var(--bs-warning);
+}
+/* =========================
+   Overview Card (โทนสบายตา ไม่ขาว)
+========================= */
+.overview-card {
+    background: linear-gradient(180deg, #eef2ff 0%, #f1f5f9 100%);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.overview-card .card-header {
+    background: rgba(255, 255, 255, 0.75);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.overview-card .card-body {
+    background: transparent;
+}
+
+/* ทำให้การ์ดสถานะด้านใน “ไม่ขาว” และสบายตา */
+.overview-card .stat-card {
+    background: rgba(255, 255, 255, 0.35);
+    /* ขาวแบบโปร่ง ไม่จั๊วะ */
+    border: 1px solid rgba(15, 23, 42, 0.06) !important;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+    transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.overview-card .stat-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.10);
+}
+
+/* พื้นหลังการ์ดแต่ละสถานะ (พาสเทลตามสี) */
+.overview-card .stat-card--primary {
+    background: rgba(13, 110, 253, 0.08);
+}
+
+.overview-card .stat-card--warning {
+    background: rgba(255, 193, 7, 0.12);
+}
+
+.overview-card .stat-card--success {
+    background: rgba(25, 135, 84, 0.10);
+}
+
+.overview-card .stat-card--danger {
+    background: rgba(220, 53, 69, 0.10);
+}
+
+/* ไอคอนให้กลม/นุ่มขึ้น */
+.overview-card .stat-ico {
+    border-radius: 14px;
+    box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
+}
+

@@ -1,0 +1,558 @@
+/* assets/css/app.css
+   Theme: TaskFlow (white/blue, soft, consistent)
+*/
+
+/* =========================
+   1) Tokens
+========================= */
+:root {
+    --app-bg: #f5f8ff;
+    --app-card: #ffffff;
+
+    --app-text: #0f172a;
+    --app-muted: rgba(15, 23, 42, 0.65);
+
+    --app-border: rgba(15, 23, 42, 0.08);
+    --app-border-2: rgba(15, 23, 42, 0.06);
+
+    --app-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+    --app-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+
+    --app-radius: 16px;
+    --app-radius-sm: 12px;
+
+    --navbar-h: 72px;
+    /* ใช้คุม page-wrapper ให้พอดี */
+
+    --primary-soft: rgba(13, 110, 253, 0.12);
+    --primary-soft-2: rgba(13, 110, 253, 0.06);
+
+    --info-soft: rgba(13, 202, 240, 0.14);
+    --success-soft: rgba(25, 135, 84, 0.14);
+    --danger-soft: rgba(220, 53, 69, 0.14);
+}
+
+/* =========================
+   2) Base
+========================= */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25)),
+        url("../img/bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+    background-color: var(--app-bg);
+
+    font-family: "Anuphan", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--app-text);
+}
+
+
+a {
+    text-decoration: none;
+}
+
+:focus-visible {
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.2);
+    border-radius: 10px;
+}
+
+/* Optional smooth */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================
+   3) Layout
+========================= */
+.page-wrapper {
+    min-height: calc(100vh - var(--navbar-h));
+}
+
+.app-main {
+    width: 100%;
+}
+
+/* =========================
+   4) Page Head (ใช้ทุกหน้าได้)
+========================= */
+.page-head {
+    background: linear-gradient(180deg,
+            rgba(13, 110, 253, 0.08),
+            rgba(255, 255, 255, 0));
+    border: 1px solid var(--app-border);
+    border-radius: var(--app-radius);
+    padding: 16px 16px 14px;
+}
+
+.page-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    margin: 0;
+}
+
+.page-subtitle {
+    color: rgba(15, 23, 42, 0.6);
+    font-size: 0.92rem;
+}
+
+/* =========================
+   5) Cards (Standard)
+========================= */
+.app-card {
+    background: var(--app-card);
+    border-radius: var(--app-radius);
+    box-shadow: var(--app-shadow-sm);
+    border: 1px solid var(--app-border-2);
+}
+
+.app-card__header {
+    background: transparent;
+    border-bottom: 1px solid var(--app-border);
+    padding: 14px 16px;
+}
+
+/* Bootstrap card ให้เข้าธีม */
+.card {
+    border-radius: var(--app-radius);
+    border-color: var(--app-border-2);
+}
+
+.card.shadow-sm {
+    box-shadow: var(--app-shadow-sm) !important;
+}
+
+/* =========================
+   6) Stat Cards
+========================= */
+.stat-card {
+    border-radius: var(--app-radius);
+    box-shadow: var(--app-shadow-sm);
+    border: 1px solid var(--app-border-2);
+    background: #fff;
+}
+
+.stat-card .card-body {
+    padding: 14px 16px;
+}
+
+.stat-label {
+    color: var(--app-muted);
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.stat-ico {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+}
+
+.stat-foot {
+    border-top: 1px dashed var(--app-border);
+    padding-top: 10px;
+}
+
+/* =========================
+   7) Badges (Soft)
+========================= */
+.badge-soft-primary {
+    color: #0b5ed7;
+    background: var(--primary-soft);
+    border: 1px solid rgba(13, 110, 253, 0.18);
+    font-weight: 700;
+}
+
+.badge-soft-secondary {
+    color: #475569;
+    background: rgba(148, 163, 184, 0.18);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    font-weight: 700;
+}
+
+.badge-soft-success {
+    color: #146c43;
+    background: var(--success-soft);
+    border: 1px solid rgba(25, 135, 84, 0.18);
+    font-weight: 700;
+}
+
+.badge-soft-danger {
+    color: #b02a37;
+    background: var(--danger-soft);
+    border: 1px solid rgba(220, 53, 69, 0.18);
+    font-weight: 700;
+}
+
+.badge-soft-info {
+    color: #087990;
+    background: var(--info-soft);
+    border: 1px solid rgba(13, 202, 240, 0.18);
+    font-weight: 700;
+}
+
+/* =========================
+   8) Table Theme
+========================= */
+.table-app thead th {
+    background: rgba(148, 163, 184, 0.12);
+    border-bottom: 1px solid var(--app-border) !important;
+    color: rgba(15, 23, 42, 0.75);
+    font-weight: 800;
+    font-size: 0.9rem;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.table-app td {
+    border-color: rgba(15, 23, 42, 0.06);
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.table-app tbody tr:hover {
+    background: var(--primary-soft-2);
+}
+
+.table-app .text-truncate {
+    max-width: 320px;
+}
+
+/* =========================
+   9) Empty State
+========================= */
+.empty-state {
+    margin-top: 10px;
+    padding: 22px;
+    border: 1px dashed var(--app-border);
+    border-radius: var(--app-radius);
+    text-align: center;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.empty-state__icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(13, 110, 253, 0.1);
+    color: #0b5ed7;
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+}
+
+/* =========================
+   10) Chart Box
+========================= */
+.chart-box {
+    height: 280px;
+    border-radius: var(--app-radius);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* =========================
+   11) Buttons + Forms (ให้เข้าธีมทั้งระบบ)
+========================= */
+.btn {
+    border-radius: 12px;
+    font-weight: 700;
+}
+
+.btn-sm {
+    border-radius: 10px;
+}
+
+.btn-outline-primary:hover {
+    background: rgba(13, 110, 253, 0.08);
+}
+
+.form-control,
+.form-select {
+    border-radius: 12px;
+    border-color: rgba(15, 23, 42, 0.12);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: rgba(13, 110, 253, 0.35);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+}
+
+.input-group .form-control {
+    border-radius: 12px;
+}
+
+.input-group> :not(:first-child):not(.dropdown-menu) {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.input-group> :not(:last-child):not(.dropdown-menu) {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+/* Alerts */
+.alert {
+    border-radius: var(--app-radius);
+    border-color: rgba(15, 23, 42, 0.06);
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    border-radius: 14px;
+    border: 1px solid var(--app-border);
+    padding: 8px;
+}
+
+.dropdown-item {
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-weight: 600;
+}
+
+.dropdown-item:hover {
+    background: rgba(13, 110, 253, 0.06);
+}
+
+/* =========================
+   12) App Navbar Theme (Dark)
+========================= */
+.app-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    min-height: var(--navbar-h);
+    background: rgba(61, 106, 139);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* blur fallback */
+@supports (backdrop-filter: blur(8px)) {
+    .app-navbar {
+        backdrop-filter: saturate(180%) blur(8px);
+    }
+}
+
+.app-brand__logo {
+    height: 46px;
+    width: auto;
+}
+
+/* Brand text ให้เป็นสีอ่อน */
+.app-brand__name {
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 900;
+    letter-spacing: 0.2px;
+    line-height: 1.1;
+}
+
+.app-brand__sub {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.78rem;
+    line-height: 1.1;
+    margin-top: 2px;
+}
+
+/* nav link look (สีอ่อน อ่านชัด) */
+.app-nav .nav-link {
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    padding: 0.55rem 0.75rem;
+    margin-right: 0.25rem;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.app-nav .nav-link:hover {
+    background: rgba(255, 255, 255, 0.10);
+    color: rgba(255, 255, 255, 0.98);
+}
+
+.app-nav .nav-link.active {
+    background: rgba(255, 255, 255, 0.16);
+    color: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* user button ให้เข้ากับ dark navbar */
+.app-userbtn {
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.10);
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.app-userbtn:hover {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+/* avatar ให้เป็นโทนสว่างบนพื้นเข้ม */
+.app-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+
+    color: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+/* ถ้าใช้ dropdown ใน navbar ให้ตัวหนังสืออ่านง่าย */
+.app-navbar .dropdown-menu {
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    box-shadow: var(--app-shadow-sm);
+}
+
+/* =========================
+   13) Small utilities (ใช้ช่วยให้หน้าไหนก็สวย)
+========================= */
+.shadow-soft {
+    box-shadow: var(--app-shadow-sm) !important;
+}
+
+.card-soft {
+    border: 1px solid var(--app-border-2);
+    border-radius: var(--app-radius);
+    background: #fff;
+}
+
+.text-muted-2 {
+    color: rgba(15, 23, 42, 0.55) !important;
+}
+
+/* Responsive tweaks */
+@media (max-width: 575.98px) {
+    :root {
+        --navbar-h: 66px;
+    }
+
+    /* logo + brand */
+    .app-brand__logo {
+        height: 40px;
+    }
+
+    .app-brand__name {
+        font-size: 1rem;
+    }
+
+    .app-brand__sub {
+        font-size: 0.72rem;
+    }
+
+    /* nav links ใน navbar: ให้เป็นแนวรายการ อ่านง่าย แตะง่าย */
+    .app-nav .nav-link {
+        padding: 0.65rem 0.8rem;
+        margin-right: 0;
+        margin-bottom: 0.25rem;
+    }
+
+    /* user button ให้พอดีมือ */
+    .app-userbtn {
+        padding: 0.55rem 0.75rem;
+        border-radius: 12px;
+    }
+
+    .stat-value {
+        font-size: 1.55rem;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+    :root {
+        --navbar-h: 70px;
+    }
+
+    .app-brand__logo {
+        height: 44px;
+    }
+
+    .app-brand__name {
+        font-size: 1.05rem;
+    }
+
+    .app-brand__sub {
+        font-size: 0.75rem;
+    }
+
+    .app-nav .nav-link {
+        padding: 0.55rem 0.7rem;
+    }
+}
+
+/* ============== Make page-head readable (ทุกหน้าทุกขนาดจอ) ============== */
+.page-head {
+    background: #ffffff !important;
+    /* ขาวทึบ */
+    border: 1px solid var(--app-border) !important;
+    box-shadow: var(--app-shadow-sm);
+}
+
+/* ค่า default = desktop */
+.app-dropdown {
+    z-index: 3000;
+}
+
+/* มือถือเท่านั้น */
+@media (max-width: 768px) {
+    .app-dropdown {
+        position: fixed !important;
+        left: 12px !important;
+        right: auto !important;
+        transform: none !important;
+    }
+}
+
+/* Global saving overlay */
+.global-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    /* สูงกว่า modal */
+    background: rgba(15, 23, 42, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(1px);
+}
+
+.global-overlay__box {
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px 20px;
+    min-width: 240px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.global-overlay__text {
+    font-weight: 600;
+    color: #0f172a;
+}

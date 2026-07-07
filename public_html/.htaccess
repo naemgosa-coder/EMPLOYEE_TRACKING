@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# ถ้าเป็นไฟล์จริง หรือโฟลเดอร์จริง ให้ผ่านไปเลย (เช่น /assets/js/app.js)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# ที่เหลือให้ส่งเข้า index.php
+RewriteRule ^(.*)$ index.php?route=$1 [L,QSA]

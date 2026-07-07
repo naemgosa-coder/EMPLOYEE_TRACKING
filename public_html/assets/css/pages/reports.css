@@ -1,0 +1,204 @@
+/* reports.css (ย้ายจาก inline) */
+.report-shell {
+            background: #e9ecef;
+            border-radius: 22px;
+            padding: 16px;
+        }
+
+        .status-bar {
+            background: #fff;
+            border-radius: 18px;
+            padding: 14px;
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            flex-wrap: wrap;
+            box-shadow: 0 1px 0 rgba(15, 23, 42, .04);
+        }
+
+        .status-pill {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid transparent;
+            position: relative;
+            min-width: 160px;
+            justify-content: center;
+        }
+
+        .status-pill.active::after {
+            content: "";
+            position: absolute;
+            left: 12px;
+            right: 12px;
+            bottom: -12px;
+            height: 4px;
+            border-radius: 999px;
+            background: #0d6efd;
+        }
+
+        .export-btn {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #111827;
+            font-weight: 700;
+            padding: 10px 12px;
+            border-radius: 12px;
+        }
+
+        .export-btn:hover {
+            background: #f3f4f6;
+        }
+
+        .table-card {
+            background: #fff;
+            border-radius: 22px;
+            padding: 18px;
+            box-shadow: 0 1px 0 rgba(15, 23, 42, .04);
+        }
+
+        table.report-table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            border-radius: 16px;
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
+        }
+
+        .thead-top {
+            background: #0b4ea2;
+            color: #fff;
+            font-weight: 800;
+        }
+
+        .thead-top th {
+            padding: 14px;
+            border-right: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .thead-sub {
+            background: #cfe8ff;
+            color: #0b2a52;
+            font-weight: 800;
+        }
+
+        .thead-sub th {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .report-table td {
+            padding: 12px;
+            border-bottom: 1px solid #eef2f7;
+            vertical-align: middle;
+        }
+
+        .search-pill {
+            max-width: 420px;
+            margin-left: auto;
+            background: #fff;
+            border-radius: 999px;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid #0b4ea2;
+        }
+
+        .search-pill input {
+            border: none;
+            outline: none;
+            width: 100%;
+        }
+
+        .user-chip {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #e5e7eb;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #374151;
+        }
+
+        .status-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .due-chip {
+            background: #f3f4f6;
+            border-radius: 999px;
+            padding: 8px 12px;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .tl-badge {
+            font-weight: 800;
+            padding: 6px 10px;
+            border-radius: 999px;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .tl-muted {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .tl-primary {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        .tl-success {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .tl-warning {
+            background: #fef9c3;
+            color: #854d0e;
+        }
+
+        .tl-danger {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        @media (max-width: 991px) {
+            .export-btn {
+                margin-left: 0;
+            }
+
+            .status-pill {
+                min-width: unset;
+                flex: 1;
+            }
+
+            .search-pill {
+                max-width: 100%;
+            }
+        }

@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap");
+
+/* หน้า login เท่านั้น */
+body {
+    font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    min-height: 100vh;
+
+    /* ปรับ path รูปพื้นหลังตามของจริง */
+    background: url("../../img/bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* overlay ให้ตัวหนังสืออ่านง่ายขึ้น */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    position: relative;
+}
+
+.login-page::before {
+    background: rgba(0, 0, 0, 0.10);
+}
+
+/* ===== glass card ===== */
+.login-page .wrapper {
+    position: relative;
+    width: 400px;
+    height: auto;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transform: scale(0);
+    transition: transform 0.5s ease, height 0.2s ease;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.98);
+    -webkit-backdrop-filter: none;
+}
+
+.login-page .wrapper.active-popup {
+    transform: scale(1);
+}
+
+.login-page .form-box {
+    width: 100%;
+    padding: 40px;
+}
+
+.login-page .icon-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: #162938;
+    font-size: 2em;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+    z-index: 2;
+    text-decoration: none;
+}
+
+.login-page .login-logo {
+    height: 100px;
+    width: auto;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.login-page h2 {
+    font-size: 2em;
+    color: #162938;
+    text-align: center;
+    margin: 0 0 8px;
+    font-weight: 900;
+}
+
+/* input style */
+.login-page .input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #162938;
+    margin: 26px 0;
+}
+
+.login-page .input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #162938;
+    font-weight: 500;
+    pointer-events: none;
+    transition: 0.25s;
+}
+
+.login-page .input-box input:focus~label,
+.login-page .input-box input:valid~label {
+    top: -5px;
+}
+
+.login-page .input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #162938;
+    font-weight: 700;
+    padding: 0 35px 0 5px;
+}
+
+.login-page .input-box .icon {
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: #162938;
+    line-height: 57px;
+}
+
+/* remember/forgot */
+.login-page .remember-forgot {
+    font-size: 0.9em;
+    color: #162938;
+    font-weight: 500;
+    margin: -8px 0 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login-page .remember-forgot label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+}
+
+.login-page .remember-forgot label input {
+    accent-color: #162938;
+}
+
+.login-page .remember-forgot a {
+    color: #162938;
+    text-decoration: none;
+}
+
+.login-page .remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+/* button */
+.login-page .btn {
+    width: 100%;
+    height: 45px;
+    background: #162938;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: white;
+    font-weight: 700;
+}
+
+/* error box */
+.login-page .error-box {
+    border-radius: 12px;
+    background: rgba(255, 233, 234, 0.95);
+    color: #b91c1c;
+    font-size: 0.95rem;
+    padding: 10px 12px;
+    margin: 10px 0 6px;
+}
+
+.login-page .error-list {
+    margin: 0;
+    padding-left: 18px;
+}

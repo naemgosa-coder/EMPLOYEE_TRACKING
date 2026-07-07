@@ -1,0 +1,80 @@
+/* ฟอนต์และพื้นหลังรวม ๆ */
+body {
+  background-color: #f5f8fc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Wrapper ของเนื้อหา */
+.page-wrapper {
+  min-height: 100vh;
+}
+
+/* การ์ดสรุปสถานะบน dashboard / myjob */
+.stat-card {
+  border-radius: 16px;
+  padding: 1.4rem 1.2rem;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.stat-icon {
+  font-size: 2rem;
+  opacity: 0.8;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 0.3rem;
+}
+
+/* timeline ใน reports */
+.timeline {
+  border-left: 3px solid #0d6efd;
+  margin-left: 20px;
+  padding-left: 20px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  background: #0d6efd;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+.timeline-time {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+/* การ์ดของรายการรายงาน */
+.task-card {
+  border-radius: 14px;
+  border-left: 6px solid #0d6efd;
+}
+
+/* ปรับ navbar */
+.navbar .nav-link.active {
+  font-weight: 600;
+  color: #0d6efd !important;
+}
+
+/* ปุ่ม login สวย ๆ ถ้าอยากใช้ */
+.btn-login {
+  border-radius: 999px;
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #1f9cff, #1c7dff);
+  border: none;
+}

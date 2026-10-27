@@ -1,8 +1,7 @@
 <?php
-// public/index.php
-require_once '../app/db.php';
-require_once '../app/auth.php';
-require_once '../app/helpers.php';
+// public_html/index.php
+
+require_once dirname(__DIR__) . '/bootstrap/app.php';
 
 // อ่าน route จาก query string ที่ .htaccess ส่งมา เช่น /login, /tasks, /tasks/add
 $route = $_GET['route'] ?? '';
@@ -10,7 +9,7 @@ $route = trim($route, '/');
 
 // API routes: /api/...
 if (str_starts_with($route, 'api')) {
-    require 'api.php';
+    require BASE_PATH . '/routes/api.php';
     exit;
 }
 
@@ -34,15 +33,15 @@ switch ($controller) {
 
     case 'login':
         // GET /login , POST /login
-        require 'login.php';
+        require BASE_PATH . '/views/login.php';
         break;
 
     case 'logout':
-        require 'logout.php';
+        require BASE_PATH . '/views/logout.php';
         break;
 
     case 'dashboard':
-        require 'dashboard.php';
+        require BASE_PATH . '/views/dashboard.php';
         break;
 
     case 'tasks':
@@ -51,13 +50,13 @@ switch ($controller) {
         // /tasks/edit      → แก้ไขงาน (ใช้ ?id=xx เพิ่มเติม)
         // /tasks/delete    → ลบงาน (ใช้ ?id=xx)
         if ($action === '') {
-            require 'tasks.php';
+            require BASE_PATH . '/views/tasks.php';
         } elseif ($action === 'add') {
-            require 'task_add.php';
+            require BASE_PATH . '/views/task_add.php';
         } elseif ($action === 'edit') {
-            require 'task_edit.php';
+            require BASE_PATH . '/views/task_edit.php';
         } elseif ($action === 'delete') {
-            require 'task_delete.php';
+            require BASE_PATH . '/views/task_delete.php';
         } else {
             http_response_code(404);
             echo "404 Not Found (tasks)";
@@ -65,29 +64,29 @@ switch ($controller) {
         break;
 
     case 'tasks-mine':
-        require 'tasks-mine.php';
+        require BASE_PATH . '/views/tasks-mine.php';
         break;
     case 'myjob':
-        require 'myjob.php';
+        require BASE_PATH . '/views/myjob.php';
         break;
     case 'reports':
         if (is_boss()) {
-            require 'reports.php';
+            require BASE_PATH . '/views/reports.php';
         } else {
-            require 'reports-mine.php';
+            require BASE_PATH . '/views/reports-mine.php';
         }
         break;
 
     case 'reports-mine':
-        require 'reports-mine.php';
+        require BASE_PATH . '/views/reports-mine.php';
         break;
     case 'users':
         // /users        → รายการพนักงาน
         // /users/add    → เพิ่มพนักงาน
         if ($action === '' || $action === 'list') {
-            require 'user_list.php';
+            require BASE_PATH . '/views/user_list.php';
         } elseif ($action === 'add') {
-            require 'user_add.php';
+            require BASE_PATH . '/views/user_add.php';
         } else {
             http_response_code(404);
             echo "404 Not Found (users)";
@@ -95,7 +94,7 @@ switch ($controller) {
         break;
 
     case 'line-link':
-        require 'line-link.php';
+        require BASE_PATH . '/views/line-link.php';
         break;
 
     default:

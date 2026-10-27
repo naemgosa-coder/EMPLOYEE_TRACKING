@@ -1,12 +1,9 @@
 <?php
-// public/api/line/webhook.php
+// public_html/api/line/webhook.php
 
-date_default_timezone_set('Asia/Bangkok');
+require_once dirname(__DIR__, 3) . '/bootstrap/app.php';
 
-$root = dirname(__DIR__, 3); // public/api/line -> project root
-require_once $root . '/app/config.php';
-require_once $root . '/app/db.php';               // ต้องมี $pdo
-require_once $root . '/app/LineBotService.php';
+use App\Services\LineBotService;
 
 if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST') {
     http_response_code(200);

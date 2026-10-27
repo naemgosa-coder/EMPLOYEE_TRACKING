@@ -1,0 +1,114 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Services;
+
+use PHPMailer\PHPMailer\PHPMailer;
+use Throwable;
+
+class Mailer
+{
+    public static function send(string $to, string $subject, string $html, array $opts = []): bool
+    {
+        [$ok, $err] = self::sendWithError($to, $subject, $html, $opts);
+        return $ok;
+    }
+
+    public static function sendWithError(string $to, string $subject, string $html, array $opts = []): array
+    {
+        $cc  = $opts['cc']  ?? [];
+        $bcc = $opts['bcc'] ?? [];
+
+        if (!filter_var($to, FILTER_VALIDATE_EMAIL)) {
+            return [false, "invalid recipient email"];
+        }
+
+        // ✅ ถ้า PHPMailer มีจริง ให้ใช้ SMTP ได้แน่นอน
+        if (class_exists(PHPMailer::class)) {
+            return self::sendViaPHPMailerWithError($to, $subject, $html, $cc, $bcc);
+        }
+
+        // ❗ fallback: mail() บน XAMPP/Windows มักส่งไม่ออก (ถ้าไม่ตั้ง sendmail)
+        $ok = self::sendViaMailFunction($to, $subject, $html, $cc, $bcc);
+        return [$ok, $ok ? null : "mail() failed or not configured (no PHPMailer/vendor)"];
+    }
+
+    private static function sendViaPHPMailerWithError(string $to, string $subject, string $html, array $cc, array $bcc): array
+    {
+        $cfg = config('mail');
+
+        $mail = new PHPMailer(true);
+
+        try {
+            $mail->CharSet = 'UTF-8';
+
+            if ($cfg['transport'] === 'smtp') {
+                $mail->isSMTP();
+                $mail->Host = $cfg['host'];
+                $mail->Port = $cfg['port'];
+
+                // ✅ Office365 ต้อง Auth + STARTTLS (587)
+                $mail->SMTPAuth = true;
+                $mail->Username = $cfg['user'];
+                $mail->Password = $cfg['pass'];
+
+                // STARTTLS
+                if ($cfg['secure'] !== '') {
+                    // แนะนำใช้ค่าคงที่ของ PHPMailer จะชัวร์กว่า string
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // tls
+                }
+                $mail->SMTPAutoTLS = true;
+
+                // (ออปชัน) ตั้ง timeout
+                $mail->Timeout = 20;
+
+                // (ดีบักชั่วคราวถ้าต้องการ) 0=ปิด, 2=ละเอียด
+                // $mail->SMTPDebug = 2;
+            }
+
+            if ($cfg['from'] === '') {
+                return [false, "MAIL_FROM is empty"];
+            }
+
+            $mail->setFrom($cfg['from'], $cfg['from_name']);
+            $mail->addAddress($to);
+
+            foreach ($cc as $e)  if (filter_var($e, FILTER_VALIDATE_EMAIL)) $mail->addCC($e);
+            foreach ($bcc as $e) if (filter_var($e, FILTER_VALIDATE_EMAIL)) $mail->addBCC($e);
+
+            $mail->isHTML(true);
+            $mail->Subject = $subject;
+            $mail->Body    = $html;
+            $mail->AltBody = strip_tags($html);
+
+            $mail->send();
+            return [true, null];
+        } catch (Throwable $e) {
+            // ✅ คืน error จริง (รวม ErrorInfo ถ้ามี)
+            $info = '';
+            if (property_exists($mail, 'ErrorInfo') && !empty($mail->ErrorInfo)) {
+                $info = " | " . $mail->ErrorInfo;
+            }
+            return [false, $e->getMessage() . $info];
+        }
+    }
+
+    private static function sendViaMailFunction(string $to, string $subject, string $html, array $cc, array $bcc): bool
+    {
+        $from = config('mail.from');
+
+        $encodedSubject = mb_encode_mimeheader($subject, 'UTF-8', 'B');
+
+        $headers = [];
+        $headers[] = 'MIME-Version: 1.0';
+        $headers[] = 'Content-type: text/html; charset=UTF-8';
+        $fromName = mb_encode_mimeheader(config('mail.from_name'), 'UTF-8', 'B');
+        $headers[] = "From: {$fromName} <{$from}>";
+
+        if (!empty($cc))  $headers[] = "Cc: "  . implode(',', $cc);
+        if (!empty($bcc)) $headers[] = "Bcc: " . implode(',', $bcc);
+
+        return mail($to, $encodedSubject, $html, implode("\r\n", $headers));
+    }
+}

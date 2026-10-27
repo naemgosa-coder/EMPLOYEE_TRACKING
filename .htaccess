@@ -1,4 +1,4 @@
-<Limit POST>
-order deny,allow
-allow from all
-</Limit>
+# Only public_html/ is meant to be web-accessible. Block everything else
+# in case the project root is served directly (e.g. local Laragon).
+RewriteEngine On
+RewriteRule ^(\.env|\.git|bin|bootstrap|config|routes|src|storage|tests|vendor|views|composer\.(json|lock))(/|$) - [F,L]

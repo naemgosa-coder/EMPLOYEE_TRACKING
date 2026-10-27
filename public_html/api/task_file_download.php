@@ -1,7 +1,6 @@
 <?php
-require_once '../../app/db.php';
-require_once '../../app/auth.php';
-require_once '../../app/helpers.php';
+
+require_once dirname(__DIR__, 2) . '/bootstrap/app.php';
 
 require_login();
 $user = current_user();
@@ -44,7 +43,8 @@ if (!$isBoss) {
 }
 
 // ===== build candidates =====
-$publicRoot = realpath(__DIR__ . '/..'); // /public
+// DB path (uploads/...) is relative to storage/ (outside the web root)
+$publicRoot = realpath(BASE_PATH . '/storage');
 if (!$publicRoot) { http_response_code(500); exit('SERVER_PATH_ERROR'); }
 
 $rel = (string)($f['path'] ?? ''); // เช่น uploads/task_files/12/abc.pdf
@@ -85,7 +85,7 @@ foreach ($candidates as $cand) {
 }
 if (!$path) { http_response_code(404); exit('FILE_NOT_FOUND'); }
 
-// ===== security: allow only under /public/uploads (ครอบทั้ง task และ task_files) =====
+// ===== security: allow only under storage/uploads (ครอบทั้ง task และ task_files) =====
 $baseUploads = realpath($publicRoot . '/uploads');
 if (!$baseUploads) { http_response_code(500); exit('UPLOADS_BASE_NOT_FOUND'); }
 

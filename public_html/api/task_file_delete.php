@@ -1,8 +1,7 @@
 <?php
-// public/api/task_file_delete.php
-require_once '../../app/db.php';
-require_once '../../app/auth.php';
-require_once '../../app/helpers.php';
+// public_html/api/task_file_delete.php
+
+require_once dirname(__DIR__, 2) . '/bootstrap/app.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -35,19 +34,20 @@ if (!$isBoss && (int)($f['assigned_by'] ?? 0) !== $uid) {
 $taskId = (int)($f['task_id'] ?? 0);
 
 // หา path ไฟล์ (รองรับหลายคอลัมน์ เผื่อ schema ไม่เหมือนกัน)
-$storedPath = trim((string)($f['stored_path'] ?? ''));
+// TaskFileModel เก็บ path = uploads/task_files/{taskId}/{stored_name} (relative to storage/)
+$storedPath = trim((string)($f['path'] ?? ($f['stored_path'] ?? '')));
 $storedName = trim((string)($f['stored_name'] ?? ($f['stored_filename'] ?? '')));
 
 $rel = '';
 if ($storedPath !== '') $rel = $storedPath;
-else if ($storedName !== '') $rel = "uploads/task/{$taskId}/{$storedName}";
+else if ($storedName !== '') $rel = "uploads/task_files/{$taskId}/{$storedName}";
 
-// ลบไฟล์จาก disk (ถ้าเจอ)
+// ลบไฟล์จาก disk (ถ้าเจอ และอยู่ใต้ storage/uploads เท่านั้น)
 if ($rel !== '') {
-  $publicRoot = realpath(__DIR__ . '/..'); // .../public
-  if ($publicRoot) {
-    $abs = $publicRoot . '/' . ltrim($rel, '/');
-    if (is_file($abs)) { @unlink($abs); }
+  $uploadsRoot = realpath(BASE_PATH . '/storage/uploads');
+  $abs = realpath(BASE_PATH . '/storage/' . ltrim(str_replace('\\', '/', $rel), '/'));
+  if ($uploadsRoot && $abs && str_starts_with($abs, $uploadsRoot . DIRECTORY_SEPARATOR) && is_file($abs)) {
+    @unlink($abs);
   }
 }
 

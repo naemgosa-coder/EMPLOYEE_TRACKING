@@ -1,8 +1,7 @@
 <?php
-// public/api/task_file_rename.php
-require_once '../../app/db.php';
-require_once '../../app/auth.php';
-require_once '../../app/helpers.php';
+// public_html/api/task_file_rename.php
+
+require_once dirname(__DIR__, 2) . '/bootstrap/app.php';
 
 header('Content-Type: application/json; charset=utf-8');
 

@@ -1,20 +1,20 @@
 <?php return array(
     'root' => array(
-        'name' => '__root__',
+        'name' => 'marthagroup/employee-tracking',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'aa2ff94d431a57dd04f90537e10faa6598797062',
-        'type' => 'library',
+        'reference' => '1c8ecd97a9164dc86b640269bba1961163c25814',
+        'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        '__root__' => array(
+        'marthagroup/employee-tracking' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'aa2ff94d431a57dd04f90537e10faa6598797062',
-            'type' => 'library',
+            'reference' => '1c8ecd97a9164dc86b640269bba1961163c25814',
+            'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,

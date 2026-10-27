@@ -1,12 +1,7 @@
 <?php
-// public/api/line/create-link-code.php
-date_default_timezone_set('Asia/Bangkok');
+// public_html/api/line/create-link-code.php
 
-$root = dirname(__DIR__, 3);
-require_once $root . '/app/config.php';
-require_once $root . '/app/db.php';
-
-if (session_status() === PHP_SESSION_NONE) session_start();
+require_once dirname(__DIR__, 3) . '/bootstrap/app.php';
 
 header('Content-Type: application/json; charset=utf-8');
 

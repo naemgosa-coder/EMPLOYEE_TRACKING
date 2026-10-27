@@ -6,5 +6,21 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Controllers\\ReportController' => $baseDir . '/src/Controllers/ReportController.php',
+    'App\\Controllers\\TaskController' => $baseDir . '/src/Controllers/TaskController.php',
+    'App\\Models\\TaskFileModel' => $baseDir . '/src/Models/TaskFileModel.php',
+    'App\\Models\\TaskLogModel' => $baseDir . '/src/Models/TaskLogModel.php',
+    'App\\Models\\TaskModel' => $baseDir . '/src/Models/TaskModel.php',
+    'App\\Models\\UserModel' => $baseDir . '/src/Models/UserModel.php',
+    'App\\Services\\LineBotService' => $baseDir . '/src/Services/LineBotService.php',
+    'App\\Services\\Mailer' => $baseDir . '/src/Services/Mailer.php',
+    'App\\Services\\NotificationService' => $baseDir . '/src/Services/NotificationService.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'PHPMailer\\PHPMailer\\DSNConfigurator' => $vendorDir . '/phpmailer/phpmailer/src/DSNConfigurator.php',
+    'PHPMailer\\PHPMailer\\Exception' => $vendorDir . '/phpmailer/phpmailer/src/Exception.php',
+    'PHPMailer\\PHPMailer\\OAuth' => $vendorDir . '/phpmailer/phpmailer/src/OAuth.php',
+    'PHPMailer\\PHPMailer\\OAuthTokenProvider' => $vendorDir . '/phpmailer/phpmailer/src/OAuthTokenProvider.php',
+    'PHPMailer\\PHPMailer\\PHPMailer' => $vendorDir . '/phpmailer/phpmailer/src/PHPMailer.php',
+    'PHPMailer\\PHPMailer\\POP3' => $vendorDir . '/phpmailer/phpmailer/src/POP3.php',
+    'PHPMailer\\PHPMailer\\SMTP' => $vendorDir . '/phpmailer/phpmailer/src/SMTP.php',
 );

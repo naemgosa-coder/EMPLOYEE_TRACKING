@@ -6,22 +6,51 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit2185d2f99bcd56787481d9357a5972d3
 {
+    public static $files = array (
+        '12300df8fd403384999b99ced33c7089' => __DIR__ . '/../..' . '/src/helpers.php',
+        'e8af20e608c70b26b5ab149bcae4244a' => __DIR__ . '/../..' . '/src/auth.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
-        'P' => 
+        'P' =>
         array (
             'PHPMailer\\PHPMailer\\' => 20,
+        ),
+        'A' =>
+        array (
+            'App\\' => 4,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'PHPMailer\\PHPMailer\\' => 
+        'PHPMailer\\PHPMailer\\' =>
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
+        'App\\' =>
+        array (
+            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 
     public static $classMap = array (
+        'App\\Controllers\\ReportController' => __DIR__ . '/../..' . '/src/Controllers/ReportController.php',
+        'App\\Controllers\\TaskController' => __DIR__ . '/../..' . '/src/Controllers/TaskController.php',
+        'App\\Models\\TaskFileModel' => __DIR__ . '/../..' . '/src/Models/TaskFileModel.php',
+        'App\\Models\\TaskLogModel' => __DIR__ . '/../..' . '/src/Models/TaskLogModel.php',
+        'App\\Models\\TaskModel' => __DIR__ . '/../..' . '/src/Models/TaskModel.php',
+        'App\\Models\\UserModel' => __DIR__ . '/../..' . '/src/Models/UserModel.php',
+        'App\\Services\\LineBotService' => __DIR__ . '/../..' . '/src/Services/LineBotService.php',
+        'App\\Services\\Mailer' => __DIR__ . '/../..' . '/src/Services/Mailer.php',
+        'App\\Services\\NotificationService' => __DIR__ . '/../..' . '/src/Services/NotificationService.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'PHPMailer\\PHPMailer\\DSNConfigurator' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/DSNConfigurator.php',
+        'PHPMailer\\PHPMailer\\Exception' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/Exception.php',
+        'PHPMailer\\PHPMailer\\OAuth' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/OAuth.php',
+        'PHPMailer\\PHPMailer\\OAuthTokenProvider' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/OAuthTokenProvider.php',
+        'PHPMailer\\PHPMailer\\PHPMailer' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/PHPMailer.php',
+        'PHPMailer\\PHPMailer\\POP3' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/POP3.php',
+        'PHPMailer\\PHPMailer\\SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/SMTP.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

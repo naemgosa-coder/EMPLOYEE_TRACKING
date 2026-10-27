@@ -1,11 +1,11 @@
 <?php
-// public/api/myjob_update_status.php
-require_once '../../app/db.php';
-require_once '../../app/auth.php';
-require_once '../../app/helpers.php';
-require_once '../../app/models/TaskLogModel.php';
-require_once '../../app/NotificationService.php';
-require_once '../../app/models/TaskFileModel.php';
+// public_html/api/myjob_update_status.php
+
+require_once dirname(__DIR__, 2) . '/bootstrap/app.php';
+
+use App\Models\TaskLogModel;
+use App\Models\TaskFileModel;
+use App\Services\NotificationService;
 
 require_login_api();
 $user = current_user();

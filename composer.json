@@ -1,5 +1,28 @@
 {
+    "name": "marthagroup/employee-tracking",
+    "description": "Employee task tracking system",
+    "type": "project",
+    "license": "proprietary",
     "require": {
+        "php": ">=8.1",
+        "ext-curl": "*",
+        "ext-pdo": "*",
+        "ext-mbstring": "*",
         "phpmailer/phpmailer": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        },
+        "files": [
+            "src/helpers.php",
+            "src/auth.php"
+        ]
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "php tests/run.php"
     }
 }

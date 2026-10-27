@@ -1,13 +1,9 @@
 <?php
-// public/api/line/unlink.php
-date_default_timezone_set('Asia/Bangkok');
+// public_html/api/line/unlink.php
 
-$root = dirname(__DIR__, 3);
-require_once $root . '/app/config.php';
-require_once $root . '/app/db.php';
-require_once $root . '/app/LineBotService.php';
+require_once dirname(__DIR__, 3) . '/bootstrap/app.php';
 
-if (session_status() === PHP_SESSION_NONE) session_start();
+use App\Services\LineBotService;
 
 header('Content-Type: application/json; charset=utf-8');
 

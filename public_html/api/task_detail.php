@@ -1,7 +1,6 @@
 <?php
-require_once '../../app/db.php';
-require_once '../../app/auth.php';
-require_once '../../app/helpers.php';
+
+require_once dirname(__DIR__, 2) . '/bootstrap/app.php';
 
 require_login();
 $user = current_user();
